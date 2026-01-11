@@ -8,18 +8,18 @@ import FindTutorForm from '../components/FindTutorForm';
 
 const Services = () => {
     const { serviceSlug } = useParams();
-    const service = servicesData[serviceSlug];
+    const service = servicesData[serviceSlug] || {};
 
     // If service not found, redirect to home or show 404 (handled by layout)
-    if (!service) {
+    if (!service.title) {
         return <Navigate to="/404" replace />;
     }
 
-    const Icon = service.icon;
+    const Icon = service.icon || (() => null);
 
     const schemaData = {
-        name: service.title,
-        description: service.description,
+        name: service.title || '',
+        description: service.description || '',
         areaServed: {
             "@type": "City",
             "name": "Lahore"
@@ -27,7 +27,7 @@ const Services = () => {
         hasOfferCatalog: {
             "@type": "OfferCatalog",
             "name": "Tutoring Services",
-            "itemListElement": service.features.map(feature => ({
+            "itemListElement": (service.features || []).map(feature => ({
                 "@type": "Offer",
                 "itemOffered": {
                     "@type": "Service",
@@ -42,7 +42,7 @@ const Services = () => {
             <Schema type="Service" data={schemaData} />
             <SEO
                 title={service.metaTitle || `${service.title} | Beacon Academy`}
-                description={service.metaDescription || service.description}
+                description={service.metaDescription || service.description || ''}
                 url={window.location.href}
             />
 
@@ -56,7 +56,7 @@ const Services = () => {
                         <span className="text-brand-gold font-bold tracking-wider uppercase text-sm">Service Detail</span>
                     </div>
                     <h1 className="text-3xl md:text-5xl font-bold mb-4">{service.title}</h1>
-                    <p className="text-xl text-gray-200 max-w-2xl">{service.subtitle}</p>
+                    <p className="text-xl text-gray-200 max-w-2xl">{service.subtitle || ''}</p>
                 </div>
             </div>
 
@@ -66,13 +66,13 @@ const Services = () => {
                     {/* Main Content */}
                     <div className="lg:col-span-2">
                         <div className="prose prose-lg max-w-none text-gray-600 mb-12">
-                            <div dangerouslySetInnerHTML={{ __html: service.content }} />
+                            <div dangerouslySetInnerHTML={{ __html: service.content || '' }} />
                         </div>
 
                         <div className="bg-gray-50 rounded-xl p-8 border border-gray-100 mb-12">
                             <h2 className="text-2xl font-bold text-brand-blue mb-6">Why Choose Our {serviceSlug.replace('-', ' ')} Tutors?</h2>
                             <div className="grid sm:grid-cols-2 gap-4">
-                                {service.features.map((feature, index) => (
+                                {(service.features || []).map((feature, index) => (
                                     <div key={index} className="flex items-start gap-3">
                                         <CheckCircle className="w-5 h-5 text-brand-gold mt-1 flex-shrink-0" />
                                         <span className="font-medium text-gray-800">{feature}</span>

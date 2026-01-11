@@ -9,10 +9,11 @@ const Newsletter = () => {
                 To get the latest news and latest updates from us.
             </p>
 
-            <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
+            <form action="/subscribe" className="space-y-3" onSubmit={(e) => e.preventDefault()}>
                 <div>
                     <input
                         type="email"
+                        name="email"
                         placeholder="Enter your email"
                         className="w-full bg-gray-800 border border-gray-700 rounded px-4 py-2 text-white placeholder-gray-500 focus:outline-none focus:border-brand-blue transition text-sm"
                         required

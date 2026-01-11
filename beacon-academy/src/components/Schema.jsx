@@ -96,7 +96,7 @@ const Schema = ({ type, data }) => {
 
 Schema.propTypes = {
     type: PropTypes.string.isRequired,
-    data: PropTypes.object
+    data: PropTypes.object.isRequired
 };
 
 export default Schema;

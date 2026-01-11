@@ -1,10 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { MessageCircle } from 'lucide-react';
 
-const WhatsAppButton = () => {
+const WhatsAppButton = ({ message }) => {
+    const url = `https://wa.me/923281446886${message ? `?text=${encodeURIComponent(message)}` : ''}`;
+
     return (
         <a
-            href="https://wa.me/923281446886"
+            href={url}
             target="_blank"
             rel="nofollow noreferrer"
             aria-label="Chat on WhatsApp"
@@ -13,6 +16,14 @@ const WhatsAppButton = () => {
             <MessageCircle className="w-8 h-8" />
         </a>
     );
+};
+
+WhatsAppButton.propTypes = {
+    message: PropTypes.string
+};
+
+WhatsAppButton.defaultProps = {
+    message: ''
 };
 
 export default WhatsAppButton;

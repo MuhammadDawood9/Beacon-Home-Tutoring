@@ -1,14 +1,19 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import PropTypes from 'prop-types';
+import { getBaseUrl } from '../utils/url';
 
 const SEO = ({ title, description, type = 'website', name = 'Beacon Home Tutoring Academy', image, url, keywords }) => {
+    const baseUrl = getBaseUrl();
+    // Use pathname from window if available, otherwise assume root
+    const pathname = typeof window !== 'undefined' ? window.location.pathname : '';
+
     return (
         <Helmet>
             {/* Standard metadata */}
             <title>{title}</title>
             <meta name='description' content={description} />
-            <link rel="canonical" href={url || `${window.location.origin}${window.location.pathname}`} />
+            <link rel="canonical" href={url || `${baseUrl}${pathname}`} />
 
             {/* Facebook tags */}
             <meta property="og:type" content={type} />

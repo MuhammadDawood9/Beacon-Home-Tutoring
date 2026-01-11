@@ -4,15 +4,17 @@ import GrowthOfferSection from '../components/GrowthOfferSection';
 import StatsCounter from '../components/StatsCounter';
 import AboutSection from '../components/AboutSection';
 import SubjectSpotlight from '../components/SubjectSpotlight';
+import { getBaseUrl } from '../utils/url';
 import { ArrowRight, BookOpen, GraduationCap, Users, ClipboardList, UserCheck, CalendarCheck, ShieldCheck, RefreshCw, Award, Wallet } from 'lucide-react';
 
 const Home = () => {
+    const baseUrl = getBaseUrl();
     return (
         <>
             <SEO
                 title="Home Tutors in Lahore | Beacon Home Tutoring Academy"
                 description="Get qualified home and online tutors in Lahore for O-Levels, A-Levels, IB, and Montessori. 15+ years of experience. Hire a tutor today."
-                url={window.location.origin}
+                url={baseUrl}
                 keywords="Home Tutors in Lahore, Home Tuition Lahore, O Level Tutors, A Level Tutors, Online Tutors Pakistan"
             />
 
@@ -218,5 +220,7 @@ const Home = () => {
         </>
     );
 };
+
+export default Home;
 
 export default Home;

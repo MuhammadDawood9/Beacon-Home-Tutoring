@@ -1,34 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 import { Users, BookOpen, UserCheck, Star, List } from 'lucide-react';
 
 const StatItem = ({ icon, target, label, isLast }) => {
     const [count, setCount] = useState(0);
-    const [isVisible, setIsVisible] = useState(false);
-    const ref = useRef(null);
+    const { ref, inView } = useInView({
+        triggerOnce: true, // Only trigger once
+        threshold: 0.1,
+    });
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                }
-            },
-            { threshold: 0.1 }
-        );
-
-        if (ref.current) {
-            observer.observe(ref.current);
-        }
-
-        return () => {
-            if (ref.current) {
-                observer.unobserve(ref.current);
-            }
-        };
-    }, []);
-
-    useEffect(() => {
-        if (!isVisible) return;
+        if (!inView) return;
 
         let startTimestamp = null;
         const duration = 2000; // 2 seconds animation
@@ -48,7 +30,7 @@ const StatItem = ({ icon, target, label, isLast }) => {
         };
 
         window.requestAnimationFrame(step);
-    }, [isVisible, target]);
+    }, [inView, target]);
 
     return (
         <div ref={ref} className={`flex-1 flex flex-col items-center justify-center p-2 relative ${!isLast ? 'md:border-r border-white/20' : ''}`}>

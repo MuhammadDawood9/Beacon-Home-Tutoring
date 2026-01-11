@@ -50,7 +50,10 @@ const BlogPost = () => {
                         <div className="p-8 md:p-12">
                             <div className="flex flex-wrap items-center gap-6 text-sm text-gray-500 mb-6">
                                 <span className="flex items-center gap-2"><Calendar className="w-4 h-4" /> {post.date}</span>
-                                <span className="flex items-center gap-2"><User className="w-4 h-4" /> {post.author}</span>
+                                <span className="flex items-center gap-2">
+                                    <img src={post.author?.avatar || 'https://www.beaconhometutoring.com/logo.png'} alt={post.author?.name || 'Beacon Academy Team'} className="w-6 h-6 rounded-full" />
+                                    {post.author?.name || 'Beacon Academy Team'}
+                                </span>
                             </div>
 
                             <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight">

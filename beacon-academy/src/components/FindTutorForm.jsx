@@ -1,6 +1,20 @@
 import React, { useState } from 'react';
 import { User, Phone, MapPin, BookOpen, Send, CheckCircle } from 'lucide-react';
 
+const locations = [
+    "DHA (All Phases)",
+    "Model Town",
+    "Johar Town",
+    "Wapda Town",
+    "Bahria Town",
+    "Cantt",
+    "Gulberg",
+    "Garden Town",
+    "Faisal Town",
+    "Valencia",
+    "Other"
+];
+
 const FindTutorForm = () => {
     const [submitted, setSubmitted] = useState(false);
 
@@ -11,7 +25,13 @@ const FindTutorForm = () => {
         const message = `*New Tutor Request*%0A%0A*Name:* ${e.target[0].value}%0A*Phone:* ${e.target[1].value}%0A*Area:* ${e.target[2].value}%0A*Subject:* ${e.target[3].value}`;
 
         // Open WhatsApp
-        window.open(`https://wa.me/923281446886?text=${message}`, '_blank');
+        const link = document.createElement('a');
+        link.href = `https://wa.me/923281446886?text=${message}`;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
 
         setSubmitted(true);
     };
@@ -70,12 +90,13 @@ const FindTutorForm = () => {
                     <label className="block text-sm font-medium text-gray-700 mb-1">Area / Location</label>
                     <div className="relative">
                         <MapPin className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
-                        <input
-                            type="text"
+                        <select
                             required
-                            placeholder="e.g. DHA Phase 5, Lahore"
-                            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition"
-                        />
+                            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition bg-white"
+                        >
+                            <option value="">Select your area</option>
+                            {locations.map(loc => <option key={loc} value={loc}>{loc}</option>)}
+                        </select>
                     </div>
                 </div>
 

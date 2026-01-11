@@ -14,7 +14,13 @@ const TutorApplicationForm = () => {
         // Construct WhatsApp Message for quick application
         const message = `*Tutor Application*%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Exp:* ${experience}%0A%0A_Please contact me for CV submission._`;
 
-        window.open(`https://wa.me/923281446886?text=${message}`, '_blank');
+        const link = document.createElement('a');
+        link.href = `https://wa.me/923281446886?text=${message}`;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
 
         setSubmitted(true);
     };
