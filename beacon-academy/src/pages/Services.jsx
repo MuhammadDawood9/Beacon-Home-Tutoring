@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, Navigate, Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import Schema from '../components/Schema';
 import { servicesData } from '../data/services';
@@ -105,14 +105,14 @@ const Services = () => {
                                     .filter(([slug]) => slug !== serviceSlug)
                                     .slice(0, 4) // Show up to 4 other services
                                     .map(([slug, data]) => (
-                                        <a
+                                        <Link
                                             key={slug}
-                                            href={`/services/${slug}`}
+                                            to={`/services/${slug}`}
                                             className="block p-4 border border-gray-100 rounded-lg hover:shadow-md hover:border-brand-blue transition group"
                                         >
                                             <h4 className="font-bold text-brand-blue group-hover:text-brand-gold transition-colors">{data.title}</h4>
                                             <p className="text-sm text-gray-500 line-clamp-1">{data.subtitle}</p>
-                                        </a>
+                                        </Link>
                                     ))}
                             </div>
                         </div>
