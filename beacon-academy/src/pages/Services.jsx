@@ -15,7 +15,7 @@ const Services = () => {
         return <Navigate to="/404" replace />;
     }
 
-    const Icon = service.icon || (() => null);
+    const Icon = service.icon;
 
     const schemaData = {
         name: service.title || '',
@@ -51,7 +51,7 @@ const Services = () => {
                 <div className="container mx-auto px-4">
                     <div className="flex items-center gap-4 mb-4">
                         <div className="p-3 bg-white/10 rounded-lg">
-                            <Icon className="w-8 h-8 text-brand-gold" />
+                            {Icon && <Icon className="w-8 h-8 text-brand-gold" />}
                         </div>
                         <span className="text-brand-gold font-bold tracking-wider uppercase text-sm">Service Detail</span>
                     </div>
