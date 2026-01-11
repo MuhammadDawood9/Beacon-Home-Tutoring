@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { CheckCircle } from 'lucide-react';
 
 const AboutSection = () => {
@@ -49,12 +50,12 @@ const AboutSection = () => {
                             ))}
                         </div>
 
-                        <a
-                            href="/contact"
+                        <Link
+                            to="/contact"
                             className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all duration-200 bg-brand-blue rounded-lg hover:bg-brand-gold hover:shadow-lg hover:-translate-y-1"
                         >
                             Get Started Today
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

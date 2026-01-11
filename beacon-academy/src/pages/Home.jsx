@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import GrowthOfferSection from '../components/GrowthOfferSection';
 import StatsCounter from '../components/StatsCounter';
@@ -53,9 +54,9 @@ const Home = () => {
                         <div
                             className="flex flex-col sm:flex-row gap-4"
                         >
-                            <a href="/contact" className="bg-brand-gold text-brand-blue font-bold py-4 px-8 rounded-lg hover:bg-white transition text-center shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            <Link to="/contact" className="bg-brand-gold text-brand-blue font-bold py-4 px-8 rounded-lg hover:bg-white transition text-center shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                                 Hire a Tutor
-                            </a>
+                            </Link>
                             <a href="#services-grid" className="border-2 border-white text-white font-bold py-4 px-8 rounded-lg hover:bg-white hover:text-brand-blue transition text-center">
                                 Explore Subjects
                             </a>
@@ -85,9 +86,9 @@ const Home = () => {
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {['O-Level', 'A-Level', 'Cambridge System', 'Oxford Curriculum', 'IB Program', 'Montessori', 'Matric & FSc', 'Spoken English'].map((service, index) => (
-                            <a
+                            <Link
                                 key={service}
-                                href={`/services/${service.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                                to={`/services/${service.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
                                 className="block bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group relative overflow-hidden"
                             >
                                 <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition">
@@ -103,7 +104,7 @@ const Home = () => {
                                 <div className="flex items-center text-brand-blue font-semibold group-hover:text-brand-gold transition-colors relative z-10">
                                     Find Tutors <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                 </div>
-                            </a>
+                            </Link>
                         ))}
                     </div>
                 </div>

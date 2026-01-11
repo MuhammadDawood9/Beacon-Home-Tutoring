@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Menu, X, Phone, MapPin, Mail, Facebook, Instagram, ChevronDown } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Menu, X, Phone, Mail, Facebook, Instagram, ChevronDown } from 'lucide-react';
 import WhatsAppButton from './WhatsAppButton';
 import Newsletter from './Newsletter';
 import Schema from './Schema';
@@ -20,10 +21,10 @@ const Layout = ({ children }) => {
         </div>
     );
 
-    const DropdownLink = ({ href, children }) => (
-        <a href={href} className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-blue hover:text-white transition">
+    const DropdownLink = ({ to, children }) => (
+        <Link to={to} className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-blue hover:text-white transition">
             {children}
-        </a>
+        </Link>
     );
 
     return (
@@ -53,41 +54,41 @@ const Layout = ({ children }) => {
             <header className="sticky top-0 z-50 bg-white shadow-md">
                 <div className="container mx-auto px-4 flex justify-between items-center relative">
                     {/* Logo */}
-                    <a href="/" aria-label="Home" className="flex items-center gap-2 py-4">
+                    <Link to="/" aria-label="Home" className="flex items-center gap-2 py-4">
                         <img src="/logo.png" alt="Beacon Academy Logo" width="64" height="64" className="h-12 w-auto md:h-16" />
                         <span className="text-xl md:text-2xl font-bold font-serif text-brand-blue hidden sm:block">Beacon Academy</span>
-                    </a>
+                    </Link>
 
                     {/* Desktop Navigation */}
                     <nav className="hidden lg:flex gap-6 items-center">
-                        <a href="/" className="font-semibold text-brand-blue hover:text-brand-gold transition">Home</a>
+                        <Link to="/" className="font-semibold text-brand-blue hover:text-brand-gold transition">Home</Link>
 
                         <NavDropdown title="About Beacon">
-                            <DropdownLink href="/about">About Us</DropdownLink>
-                            <DropdownLink href="/why-beacon">Why Beacon</DropdownLink>
-                            <DropdownLink href="/join-team">Become a Tutor</DropdownLink>
+                            <DropdownLink to="/about">About Us</DropdownLink>
+                            <DropdownLink to="/why-beacon">Why Beacon</DropdownLink>
+                            <DropdownLink to="/join-team">Become a Tutor</DropdownLink>
                         </NavDropdown>
 
                         <NavDropdown title="Tutoring Services">
-                            <DropdownLink href="/services/o-level">O-Level / IGCSE</DropdownLink>
-                            <DropdownLink href="/services/a-level">A-Level</DropdownLink>
-                            <DropdownLink href="/services/ib-program">IB Program (PYP/MYP/DP)</DropdownLink>
-                            <DropdownLink href="/services/matric-fsc">Matric & FSc</DropdownLink>
-                            <DropdownLink href="/services/montessori">Montessori & Junior Grades</DropdownLink>
-                            <DropdownLink href="/services/spoken-english">Spoken English & IELTS</DropdownLink>
+                            <DropdownLink to="/services/o-level">O-Level / IGCSE</DropdownLink>
+                            <DropdownLink to="/services/a-level">A-Level</DropdownLink>
+                            <DropdownLink to="/services/ib-program">IB Program (PYP/MYP/DP)</DropdownLink>
+                            <DropdownLink to="/services/matric-fsc">Matric & FSc</DropdownLink>
+                            <DropdownLink to="/services/montessori">Montessori & Junior Grades</DropdownLink>
+                            <DropdownLink to="/services/spoken-english">Spoken English & IELTS</DropdownLink>
                         </NavDropdown>
 
                         <NavDropdown title="Curriculums">
-                            <DropdownLink href="/services/cambridge-system">Cambridge System</DropdownLink>
-                            <DropdownLink href="/services/oxford-curriculum">Oxford Curriculum</DropdownLink>
+                            <DropdownLink to="/services/cambridge-system">Cambridge System</DropdownLink>
+                            <DropdownLink to="/services/oxford-curriculum">Oxford Curriculum</DropdownLink>
                         </NavDropdown>
 
-                        <a href="/blog" className="font-semibold text-brand-blue hover:text-brand-gold transition">Blog</a>
-                        <a href="/faq" className="font-semibold text-brand-blue hover:text-brand-gold transition">FAQ</a>
+                        <Link to="/blog" className="font-semibold text-brand-blue hover:text-brand-gold transition">Blog</Link>
+                        <Link to="/faq" className="font-semibold text-brand-blue hover:text-brand-gold transition">FAQ</Link>
 
-                        <a href="/contact" className="ml-4 bg-brand-gold text-brand-blue px-6 py-2.5 rounded-full font-bold hover:bg-opacity-90 transition shadow-sm">
+                        <Link to="/contact" className="ml-4 bg-brand-gold text-brand-blue px-6 py-2.5 rounded-full font-bold hover:bg-opacity-90 transition shadow-sm">
                             Contact Us
-                        </a>
+                        </Link>
                     </nav>
 
                     {/* Mobile Menu Button - Keeping it visible on md/sm */}
@@ -104,36 +105,36 @@ const Layout = ({ children }) => {
                 {isMenuOpen && (
                     <div className="lg:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl h-[80vh] overflow-y-auto">
                         <nav className="flex flex-col p-4 gap-4 font-semibold text-brand-blue">
-                            <a href="/" onClick={toggleMenu} className="hover:text-brand-gold">Home</a>
+                            <Link to="/" onClick={toggleMenu} className="hover:text-brand-gold">Home</Link>
 
                             <div className="flex flex-col gap-2">
                                 <span className="text-gray-400 text-xs uppercase tracking-wider font-bold">About</span>
-                                <a href="/#about" onClick={toggleMenu} className="pl-4 border-l-2 border-gray-100 hover:border-brand-gold transition">About Us</a>
-                                <a href="/join-team" onClick={toggleMenu} className="pl-4 border-l-2 border-gray-100 hover:border-brand-gold transition">Become a Tutor</a>
+                                <Link to="/about" onClick={toggleMenu} className="pl-4 border-l-2 border-gray-100 hover:border-brand-gold transition">About Us</Link>
+                                <Link to="/join-team" onClick={toggleMenu} className="pl-4 border-l-2 border-gray-100 hover:border-brand-gold transition">Become a Tutor</Link>
                             </div>
 
                             <div className="flex flex-col gap-2">
                                 <span className="text-gray-400 text-xs uppercase tracking-wider font-bold">Tutoring Services</span>
-                                <a href="/services/o-level" onClick={toggleMenu} className="pl-4 border-l-2 border-gray-100 hover:border-brand-gold transition">O-Level / IGCSE</a>
-                                <a href="/services/a-level" onClick={toggleMenu} className="pl-4 border-l-2 border-gray-100 hover:border-brand-gold transition">A-Level</a>
-                                <a href="/services/ib-program" onClick={toggleMenu} className="pl-4 border-l-2 border-gray-100 hover:border-brand-gold transition">IB Program</a>
-                                <a href="/services/matric-fsc" onClick={toggleMenu} className="pl-4 border-l-2 border-gray-100 hover:border-brand-gold transition">Matric & FSc</a>
-                                <a href="/services/montessori" onClick={toggleMenu} className="pl-4 border-l-2 border-gray-100 hover:border-brand-gold transition">Montessori</a>
-                                <a href="/services/spoken-english" onClick={toggleMenu} className="pl-4 border-l-2 border-gray-100 hover:border-brand-gold transition">Spoken English</a>
+                                <Link to="/services/o-level" onClick={toggleMenu} className="pl-4 border-l-2 border-gray-100 hover:border-brand-gold transition">O-Level / IGCSE</Link>
+                                <Link to="/services/a-level" onClick={toggleMenu} className="pl-4 border-l-2 border-gray-100 hover:border-brand-gold transition">A-Level</Link>
+                                <Link to="/services/ib-program" onClick={toggleMenu} className="pl-4 border-l-2 border-gray-100 hover:border-brand-gold transition">IB Program</Link>
+                                <Link to="/services/matric-fsc" onClick={toggleMenu} className="pl-4 border-l-2 border-gray-100 hover:border-brand-gold transition">Matric & FSc</Link>
+                                <Link to="/services/montessori" onClick={toggleMenu} className="pl-4 border-l-2 border-gray-100 hover:border-brand-gold transition">Montessori</Link>
+                                <Link to="/services/spoken-english" onClick={toggleMenu} className="pl-4 border-l-2 border-gray-100 hover:border-brand-gold transition">Spoken English</Link>
                             </div>
 
                             <div className="flex flex-col gap-2">
                                 <span className="text-gray-400 text-xs uppercase tracking-wider font-bold">Curriculums</span>
-                                <a href="/services/cambridge-system" onClick={toggleMenu} className="pl-4 border-l-2 border-gray-100 hover:border-brand-gold transition">Cambridge System</a>
-                                <a href="/services/oxford-curriculum" onClick={toggleMenu} className="pl-4 border-l-2 border-gray-100 hover:border-brand-gold transition">Oxford Curriculum</a>
+                                <Link to="/services/cambridge-system" onClick={toggleMenu} className="pl-4 border-l-2 border-gray-100 hover:border-brand-gold transition">Cambridge System</Link>
+                                <Link to="/services/oxford-curriculum" onClick={toggleMenu} className="pl-4 border-l-2 border-gray-100 hover:border-brand-gold transition">Oxford Curriculum</Link>
                             </div>
 
                             <div className="border-t border-gray-100 pt-4 flex flex-col gap-4">
-                                <a href="/blog" onClick={toggleMenu} className="hover:text-brand-gold">Blog</a>
-                                <a href="/faq" onClick={toggleMenu} className="hover:text-brand-gold">FAQ</a>
-                                <a href="/contact" onClick={toggleMenu} className="bg-brand-gold text-brand-blue px-4 py-3 rounded-lg text-center font-bold shadow-sm">
+                                <Link to="/blog" onClick={toggleMenu} className="hover:text-brand-gold">Blog</Link>
+                                <Link to="/faq" onClick={toggleMenu} className="hover:text-brand-gold">FAQ</Link>
+                                <Link to="/contact" onClick={toggleMenu} className="bg-brand-gold text-brand-blue px-4 py-3 rounded-lg text-center font-bold shadow-sm">
                                     Contact Us
-                                </a>
+                                </Link>
                             </div>
                         </nav>
                     </div>
@@ -170,12 +171,12 @@ const Layout = ({ children }) => {
                     <div>
                         <h3 className="text-xl font-bold text-white mb-4">Quick Links</h3>
                         <ul className="space-y-2 text-sm">
-                            <li><a href="/services/o-level-tutors" className="hover:text-brand-gold">O-Level Tutors</a></li>
-                            <li><a href="/services/a-level-tutors" className="hover:text-brand-gold">A-Level Tutors</a></li>
-                            <li><a href="/services/ib-program" className="hover:text-brand-gold">IB Program</a></li>
-                            <li><a href="/blog" className="hover:text-brand-gold">Education Blog</a></li>
-                            <li><a href="/faq" className="hover:text-brand-gold">FAQ</a></li>
-                            <li><a href="/join-team" className="hover:text-brand-gold">Become a Tutor</a></li>
+                            <li><Link to="/services/o-level" className="hover:text-brand-gold">O-Level Tutors</Link></li>
+                            <li><Link to="/services/a-level" className="hover:text-brand-gold">A-Level Tutors</Link></li>
+                            <li><Link to="/services/ib-program" className="hover:text-brand-gold">IB Program</Link></li>
+                            <li><Link to="/blog" className="hover:text-brand-gold">Education Blog</Link></li>
+                            <li><Link to="/faq" className="hover:text-brand-gold">FAQ</Link></li>
+                            <li><Link to="/join-team" className="hover:text-brand-gold">Become a Tutor</Link></li>
                         </ul>
                     </div>
 
