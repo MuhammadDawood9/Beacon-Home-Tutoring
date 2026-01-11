@@ -1,31 +1,31 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Phone, Mail, Facebook, Instagram, ChevronDown } from 'lucide-react';
+import { Menu, X, Phone, MapPin, Mail, Facebook, Instagram, ChevronDown } from 'lucide-react';
 import WhatsAppButton from './WhatsAppButton';
 import Newsletter from './Newsletter';
 import Schema from './Schema';
+
+const NavDropdown = ({ title, children }) => (
+    <div className="relative group">
+        <button className="flex items-center gap-1 font-semibold text-brand-blue hover:text-brand-gold transition py-4">
+            {title} <ChevronDown className="w-4 h-4" />
+        </button>
+        <div className="absolute top-full left-0 bg-white shadow-xl rounded-b-lg py-2 min-w-[240px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 border-t-4 border-brand-gold z-50">
+            {children}
+        </div>
+    </div>
+);
+
+const DropdownLink = ({ to, children }) => (
+    <Link to={to} className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-blue hover:text-white transition">
+        {children}
+    </Link>
+);
 
 const Layout = ({ children }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
-    const NavDropdown = ({ title, children }) => (
-        <div className="relative group">
-            <button className="flex items-center gap-1 font-semibold text-brand-blue hover:text-brand-gold transition py-4">
-                {title} <ChevronDown className="w-4 h-4" />
-            </button>
-            <div className="absolute top-full left-0 bg-white shadow-xl rounded-b-lg py-2 min-w-[240px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 border-t-4 border-brand-gold z-50">
-                {children}
-            </div>
-        </div>
-    );
-
-    const DropdownLink = ({ to, children }) => (
-        <Link to={to} className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-blue hover:text-white transition">
-            {children}
-        </Link>
-    );
 
     return (
         <div className="flex flex-col min-h-screen font-sans text-gray-900">

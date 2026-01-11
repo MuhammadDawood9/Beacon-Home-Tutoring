@@ -35,6 +35,10 @@ const Faq = () => {
     const [openIndex, setOpenIndex] = useState(0);
     const baseUrl = getBaseUrl();
 
+    const toggleFaq = (index) => {
+        setOpenIndex(openIndex === index ? -1 : index);
+    };
+
     const faqs = [
         {
             question: "How To Unlock Your Learning Potential with Beacon Home Tutor?",

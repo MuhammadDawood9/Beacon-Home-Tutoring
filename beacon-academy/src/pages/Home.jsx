@@ -85,7 +85,7 @@ const Home = () => {
                     </div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {['O-Level', 'A-Level', 'Cambridge System', 'Oxford Curriculum', 'IB Program', 'Montessori', 'Matric & FSc', 'Spoken English'].map((service, index) => (
+                        {['O-Level', 'A-Level', 'Cambridge System', 'Oxford Curriculum', 'IB Program', 'Montessori', 'Matric & FSc', 'Spoken English'].map((service) => (
                             <Link
                                 key={service}
                                 to={`/services/${service.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}

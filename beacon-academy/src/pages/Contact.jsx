@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import FindTutorForm from '../components/FindTutorForm';
 import { Phone, Mail, MapPin } from 'lucide-react';
@@ -61,9 +62,9 @@ const Contact = () => {
                         <div className="mt-12 p-6 bg-gray-50 rounded-xl border border-gray-100">
                             <h3 className="font-bold text-xl text-brand-blue mb-2">Are you a Tutor?</h3>
                             <p className="text-gray-600 mb-4">Join our network of professional educators.</p>
-                            <a href="/join-team" className="text-brand-blue font-bold hover:underline flex items-center gap-1">
+                            <Link to="/join-team" className="text-brand-blue font-bold hover:underline flex items-center gap-1">
                                 Apply as a Tutor &rarr;
-                            </a>
+                            </Link>
                         </div>
                     </div>
 
