@@ -43,7 +43,7 @@ const Services = () => {
             <SEO
                 title={service.metaTitle || `${service.title} | Beacon Academy`}
                 description={service.metaDescription || service.description || ''}
-                url={window.location.href}
+                url={`https://beacon.academy/services/${serviceSlug}`}
             />
 
             {/* Hero */}

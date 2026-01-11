@@ -1,14 +1,31 @@
 import React from 'react';
 import SEO from '../components/SEO';
-import { User, Users, BookOpen, Star, Zap, Layers } from 'lucide-react';
+import Schema from '../components/Schema';
+import StatsCounter from '../components/StatsCounter';
+import { homeStats } from '../data/stats';
+import { Layers } from 'lucide-react';
 
 const WhyBeacon = () => {
+    const schemaData = {
+        name: "Why Choose Beacon | Premium Home Tutoring in Lahore",
+        description: "Discover why Beacon Home Tutoring Academy is the top choice for parents in Lahore. Expert instructors, personalized learning, and proven results.",
+        url: "https://beacon.academy/why-beacon",
+        logo: "https://beacon.academy/logo.png",
+        parentOrganization: {
+            "@type": "Organization",
+            name: "Beacon Academy",
+            url: "https://beacon.academy",
+            logo: "https://beacon.academy/logo.png"
+        }
+    };
+
     return (
         <>
+            <Schema type="WebPage" data={schemaData} />
             <SEO
                 title="Why Choose Beacon | Premium Home Tutoring in Lahore"
                 description="Discover why Beacon Home Tutoring Academy is the top choice for parents in Lahore. Expert instructors, personalized learning, and proven results."
-                url={window.location.href}
+                url="https://beacon.academy/why-beacon"
             />
 
             {/* Hero Section */}
@@ -62,32 +79,7 @@ const WhyBeacon = () => {
             </section>
 
             {/* Stats Bar */}
-            <section className="bg-brand-blue py-16 text-white">
-                <div className="container mx-auto px-4">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/10">
-                        <div className="p-4">
-                            <User className="w-10 h-10 mx-auto mb-4 text-brand-gold" />
-                            <h3 className="text-3xl font-bold mb-1">15000</h3>
-                            <p className="text-sm opacity-80 font-semibold">Expert Instructors</p>
-                        </div>
-                        <div className="p-4">
-                            <BookOpen className="w-10 h-10 mx-auto mb-4 text-brand-gold" />
-                            <h3 className="text-3xl font-bold mb-1">1754</h3>
-                            <p className="text-sm opacity-80 font-semibold">Total Courses</p>
-                        </div>
-                        <div className="p-4">
-                            <Users className="w-10 h-10 mx-auto mb-4 text-brand-gold" />
-                            <h3 className="text-3xl font-bold mb-1">10000</h3>
-                            <p className="text-sm opacity-80 font-semibold">Happy Students</p>
-                        </div>
-                        <div className="p-4">
-                            <Zap className="w-10 h-10 mx-auto mb-4 text-brand-gold" />
-                            <h3 className="text-3xl font-bold mb-1">654</h3>
-                            <p className="text-sm opacity-80 font-semibold">Creative Events</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <StatsCounter stats={homeStats} />
 
             {/* Split Feature Section */}
             <section className="flex flex-col md:flex-row h-auto md:h-[600px]">

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SEO from '../components/SEO';
+import Schema from '../components/Schema';
 import { getBaseUrl } from '../utils/url';
 import { Flag, ChevronDown, ChevronUp, ArrowRight, PlusCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -34,10 +35,6 @@ const Faq = () => {
     const [openIndex, setOpenIndex] = useState(0);
     const baseUrl = getBaseUrl();
 
-    const toggleFaq = (index) => {
-        setOpenIndex(openIndex === index ? -1 : index);
-    };
-
     const faqs = [
         {
             question: "How To Unlock Your Learning Potential with Beacon Home Tutor?",
@@ -61,8 +58,20 @@ const Faq = () => {
         }
     ];
 
+    const schemaData = {
+        mainEntity: faqs.map(faq => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer
+            }
+        }))
+    };
+
     return (
         <>
+            <Schema type="FAQPage" data={schemaData} />
             <SEO
                 title="FAQ | Beacon Home Tutoring Academy"
                 description="Frequently Asked Questions about our home tutoring services in Lahore. Learn about our tutors, costs, and teaching methodology."

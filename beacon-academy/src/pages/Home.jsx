@@ -6,6 +6,7 @@ import AboutSection from '../components/AboutSection';
 import SubjectSpotlight from '../components/SubjectSpotlight';
 import { getBaseUrl } from '../utils/url';
 import { ArrowRight, BookOpen, GraduationCap, Users, ClipboardList, UserCheck, CalendarCheck, ShieldCheck, RefreshCw, Award, Wallet } from 'lucide-react';
+import { homeStats } from '../data/stats'; // Import the stats
 
 const Home = () => {
     const baseUrl = getBaseUrl();
@@ -112,7 +113,7 @@ const Home = () => {
 
 
             {/* Animated Stats Section */}
-            <StatsCounter />
+            <StatsCounter stats={homeStats} />
 
             {/* How It Works Section */}
             <section className="py-20 bg-white border-t border-b">
@@ -139,6 +140,7 @@ const Home = () => {
                         {/* Step 2 */}
                         <div className="flex flex-col items-center">
                             <div className="w-16 h-16 bg-brand-gold/10 rounded-full flex items-center justify-center mb-6 text-brand-blue">
+
                                 <UserCheck className="w-8 h-8" />
                             </div>
                             <h3 className="text-xl font-bold text-brand-blue mb-3">2. We Match You with an Expert</h3>
@@ -220,7 +222,5 @@ const Home = () => {
         </>
     );
 };
-
-export default Home;
 
 export default Home;
