@@ -1,15 +1,5 @@
 # Beacon Home Tutoring Academy
 
-** VERY IMPORTANT **
-
-If you are seeing build errors about missing packages, you need to run the following command in your terminal:
-
-```bash
-npm install
-```
-
----
-
 Beacon Home Tutoring Academy is a premier educational platform dedicated to bridging the gap between ambitious students and professional educators across Lahore. Our mission is to provide accessible, high-quality personalized learning experiences right at your doorstep. We specialize in connecting parents and students with verified, expert tutors in key residential areas including DHA, Bahria Town, Askari 10 & 11, Valencia Town, and Johar Town.
 
 ### **Our Services**
