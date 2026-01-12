@@ -7,7 +7,7 @@ import AboutSection from '../components/AboutSection';
 import SubjectSpotlight from '../components/SubjectSpotlight';
 import { getBaseUrl } from '../utils/url';
 import { ArrowRight, BookOpen, GraduationCap, Users, ClipboardList, UserCheck, CalendarCheck, ShieldCheck, RefreshCw, Award, Wallet } from 'lucide-react';
-import { homeStats } from '../data/stats'; // Import the stats
+import { homeStats } from '../data/stats.jsx'; // Import the stats
 
 const Home = () => {
     const baseUrl = getBaseUrl();

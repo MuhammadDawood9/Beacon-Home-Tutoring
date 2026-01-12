@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { homeStats } from '../data/stats'; // Import default stats
+import { homeStats } from '../data/stats.jsx'; // Import default stats
 
 const StatItem = ({ icon, target, label, isLast }) => {
     const [count, setCount] = useState(0);
