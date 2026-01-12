@@ -2,7 +2,7 @@ import React from 'react';
 import SEO from '../components/SEO';
 import Schema from '../components/Schema';
 import StatsCounter from '../components/StatsCounter';
-import { homeStats } from '../data/stats';
+import { homeStats } from '../data/stats.jsx';
 import { Layers } from 'lucide-react';
 
 const WhyBeacon = () => {
